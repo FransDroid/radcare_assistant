@@ -1,0 +1,14 @@
+flask
+tensorflow
+pillow
+numpy
+opencv-python
+gunicorn
+flask-cors
+pandas
+h5py
+protobuf
+scipy
+scikit-image
+matplotlib
+pydicom

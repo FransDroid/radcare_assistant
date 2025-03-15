@@ -1,0 +1,70 @@
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: flask-app:latest
+    container_name: radcare-assistant
+    restart: always
+    ports:
+      - "9090:5000" # Map host port 9090 to container port 5000
+    volumes:
+      # Persist model files and other data
+      - ./models:/app/models
+      - ./static:/app/static
+      - ./uploads:/app/uploads # If your app handles file uploads
+      - ./logs:/app/logs # For application logs
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=app.py
+      - PYTHONUNBUFFERED=1
+      # Add additional environment variables as needed
+      # - DATABASE_URL=
+      # - SECRET_KEY=
+    networks:
+      - flask-network
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    image: nginx:latest
+    container_name: nginx-web
+    restart: always
+    ports:
+      - "8080:80" # Map host port 8080 to container port 80
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf # Optional: custom nginx config
+    networks:
+      - flask-network
+    depends_on:
+      - flask-app
+
+networks:
+  flask-network:
+    driver: bridge
+
+volumes:
+  models:
+    driver: local
+  uploads:
+    driver: local
+  logs:
+    driver: local
+  html:
+    driver: local
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nginx Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        a.button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        a.button:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nginx Test Page</h1>
+    
+    <div class="container">
+        <p><span class="success">✓ Success!</span> If you can see this page, your Nginx server is working correctly.</p>
+        <p>This static HTML file is being served by <strong>Nginx</strong> from the Docker container.</p>
+        
+        <h2>Test Flask API Connection</h2>
+        <p>Click the button below to test if the Nginx proxy to your Flask API is working:</p>
+        
+        <a href="/" class="button">Test Flask API</a>
+        
+        <p>If the proxy is configured correctly, you should see a response from your Flask application.</p>
+    </div>
+    
+    <div class="container">
+        <h2>Server Information</h2>
+        <ul>
+            <li><strong>Server:</strong> Nginx</li>
+            <li><strong>Container:</strong> nginx-web</li>
+            <li><strong>Port:</strong> 8080</li>
+        </ul>
+    </div>
+    
+    <p><small>This page is for testing purposes only.</small></p>
+</body>
+</html>
+
