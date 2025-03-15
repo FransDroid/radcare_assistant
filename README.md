@@ -9,6 +9,9 @@ RadCare Assistant is a tool that helps analyze chest X-ray images using machine 
 - User-friendly interface for medical professionals
 - Secure storage of analysis results
 
+## Data Source
+RadCare Assistant was inspired by and trained on the NIH Chest X-ray Dataset, a large publicly available dataset of chest X-ray images provided by the National Institutes of Health. This dataset consists of over 100,000 anonymized chest X-ray images with corresponding medical annotations, making it an invaluable resource for developing machine learning models for medical image analysis.
+
 ## Installation
 1. Make sure you have Docker installed on your computer
 2. Clone this repository
